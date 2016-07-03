@@ -17,7 +17,7 @@ type Record struct {
 	Volume uint64
 }
 
-func Import(path string) ([]Record) {
+func Import(path string) []Record {
 	f, err := os.Open(path)
 	if err != nil {
 		return []Record{}
