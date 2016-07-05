@@ -18,9 +18,10 @@ func main() {
 	ma := analytics.MA(prices, 16)
 	pm := analytics.PercentageMovement(prices)
 	it := analytics.IdentifyTrend(records)
-	v := analytics.Volatility(records)
+	sv := analytics.SpikeVolatility(records)
+  hlv := analytics.HighLowVolatility(records)
 
 	for i, r := range records {
-		fmt.Println(r, numbers.RoundPlus(ma[i], 5), numbers.RoundPlus(pm[i], 4), numbers.RoundPlus(v[i], 5), it[i])
+		fmt.Println(r, numbers.RoundPlus(ma[i], 5), numbers.RoundPlus(pm[i], 4), numbers.RoundPlus(sv[i], 5), numbers.RoundPlus(hlv[i], 5), it[i])
 	}
 }

@@ -55,24 +55,38 @@ func TestIdentifyTrend(t *testing.T) {
 	}
 }
 
-func TestVolatility(t *testing.T) {
-	if Volatility([]fx.Record{{"", "", 1, 2, 1, 2, 0}})[0] != 0 {
+func TestSpikeVolatility(t *testing.T) {
+	if SpikeVolatility([]fx.Record{{"", "", 1, 2, 1, 2, 0}})[0] != 0 {
 		t.Error("Volatility failed")
 	}
 
-	if Volatility([]fx.Record{{"", "", 1, 2, 1, 1, 0}})[0] != 1.0 {
-		t.Error("Volatility failed", Volatility([]fx.Record{{"", "", 1, 2, 1, 1, 0}}))
+	if SpikeVolatility([]fx.Record{{"", "", 1, 2, 1, 1, 0}})[0] != 1.0 {
+		t.Error("Volatility failed")
 	}
 
-	if Volatility([]fx.Record{{"", "", 1, 3, 0, 2, 0}})[0] != 2.0 {
-		t.Error("Volatility failed", Volatility([]fx.Record{{"", "", 1, 3, 0, 2, 0}}))
+	if SpikeVolatility([]fx.Record{{"", "", 1, 3, 0, 2, 0}})[0] != 2.0 {
+		t.Error("Volatility failed")
 	}
 
-	if Volatility([]fx.Record{{"", "", 2, 2, 1, 1, 0}})[0] != 0.0 {
-		t.Error("Volatility failed", Volatility([]fx.Record{{"", "", 2, 2, 1, 1, 0}}))
+	if SpikeVolatility([]fx.Record{{"", "", 2, 2, 1, 1, 0}})[0] != 0.0 {
+		t.Error("Volatility failed")
 	}
 
-	if Volatility([]fx.Record{{"", "", 2, 3, 0, 1, 0}})[0] != 2.0 {
-		t.Error("Volatility failed", Volatility([]fx.Record{{"", "", 2, 3, 0, 1, 0}}))
+	if SpikeVolatility([]fx.Record{{"", "", 2, 3, 0, 1, 0}})[0] != 2.0 {
+		t.Error("Volatility failed")
+	}
+}
+
+func TestHighLowVolatility(t *testing.T) {
+	if HighLowVolatility([]fx.Record{{"", "", 0, 2, 1, 0, 0}})[0] != 1.0 {
+		t.Error("Volatility failed")
+	}
+
+	if HighLowVolatility([]fx.Record{{"", "", 0, 2, 1, 0, 0}})[0] != 1.0 {
+		t.Error("Volatility failed")
+	}
+
+	if HighLowVolatility([]fx.Record{{"", "", 0, 3, 0, 0, 0}})[0] != 3.0 {
+		t.Error("Volatility failed")
 	}
 }
