@@ -59,7 +59,7 @@ func IdentifyTrend(data []fx.Record) []bool {
 func Volatility(data []fx.Record) []float64 {
 	result := make([]float64, len(data))
 	for k, r := range data {
-		result[k] = math.Abs(float64(r.High-r.Low)) - math.Abs(float64(r.Open-r.Close))
+		result[k] = math.Abs(r.High-r.Low) - math.Abs(r.Open-r.Close)
 	}
 	return result
 }

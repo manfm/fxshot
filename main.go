@@ -10,13 +10,9 @@ import (
 func main() {
 	records := fx.Import("data/EURUSD5.csv")
 
-	for _, r := range records {
-		fmt.Printf("%f - %f = %f \n", r.Open, r.Close, numbers.RoundPlus(float64(r.Open-r.Close), 5))
-	}
-
 	prices := make([]float64, len(records))
 	for k, r := range records {
-		prices[k] = float64(r.Close)
+		prices[k] = r.Close
 	}
 
 	ma := analytics.MA(prices, 16)

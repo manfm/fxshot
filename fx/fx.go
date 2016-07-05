@@ -26,19 +26,14 @@ func Import(path string) []Record {
 		r := Record{}
 		r.Date = record[0]
 		r.Time = record[1]
-		r.Open = priceToFl32(record[2])
-		r.High = priceToFl32(record[3])
-		r.Low = priceToFl32(record[4])
-		r.Close = priceToFl32(record[5])
+		r.Open, _ = strconv.ParseFloat(record[2], 64)
+		r.High, _ = strconv.ParseFloat(record[3], 64)
+		r.Low, _ = strconv.ParseFloat(record[4], 64)
+		r.Close, _ = strconv.ParseFloat(record[5], 64)
 		r.Volume, _ = strconv.ParseUint(record[6], 0, 16)
 
 		records = append(records, r)
 	}
 
 	return records
-}
-
-func priceToFl32(price string) float32 {
-	p, _ := strconv.ParseFloat(price, 32)
-	return float32(p)
 }
