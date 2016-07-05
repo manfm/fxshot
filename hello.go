@@ -14,17 +14,17 @@ func main() {
 		fmt.Printf("%f - %f = %f \n", r.Open, r.Close, numbers.RoundPlus(float64(r.Open-r.Close), 5))
 	}
 
-	for _, r := range ma16(records) {
-		fmt.Println(r)
-	}
-}
-
-func ma16(records []fx.Record) []float64 {
 	prices := make([]float64, len(records))
-
 	for k, r := range records {
 		prices[k] = float64(r.Close)
 	}
 
-	return analytics.MA(prices, 16)
+	ma := analytics.MA(prices, 16)
+	pm := analytics.PercentageMovement(prices)
+	it := analytics.IdentifyTrend(records)
+	v := analytics.Volatility(records)
+
+	for i, r := range records {
+		fmt.Println(r, numbers.RoundPlus(ma[i], 5), numbers.RoundPlus(pm[i], 4), numbers.RoundPlus(v[i], 5), it[i])
+	}
 }

@@ -7,16 +7,6 @@ import (
 	"strconv"
 )
 
-type Record struct {
-	Date   string
-	Time   string
-	Open   float32
-	High   float32
-	Low    float32
-	Close  float32
-	Volume uint64
-}
-
 func Import(path string) []Record {
 	f, err := os.Open(path)
 	if err != nil {
