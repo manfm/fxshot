@@ -20,7 +20,7 @@ func main() {
 	// pm := analytics.PercentageMovement(prices)
 	tr := analytics.IdentifyTrend(records)
 	// sv := analytics.SpikeVolatility(records)
-  // hlv := analytics.HighLowVolatility(records)
+	// hlv := analytics.HighLowVolatility(records)
 
 	for i, r := range records {
 		from := i - 5
